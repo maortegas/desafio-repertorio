@@ -1,12 +1,12 @@
-console.log("Primer Log");
 const express = require('express')
 const app = express()
-const routes =require("./routes/routes");
+const routes =require("./routes/route");
 
-const PORT = process.env.PORT ||3005;
+const PORT = process.env.PORT || 3005
 
-app.method(path, callback)
 
+app.use(express.json());
 app.use("/", routes);
+
 
 app.listen(PORT, ()=> console.log(`Listening on port ${PORT}`))
