@@ -1,6 +1,12 @@
 const express = require('express');
+
 const router = express.Router();
 const fs = require('fs')
+
+
+router.get('/', (req,res)=>{
+  res.sendFile(process.cwd()+"/index.html")
+})
 
 router.get('/canciones', (req,res)=>{
     const repertorio = JSON.parse(fs.readFileSync("./repertorio.json", "utf8"));
@@ -19,7 +25,7 @@ router.put('/canciones/:id', (req, res)=>{
 
 router.post("/canciones", (req, res) => {
   const cancion = req.body; 
-  const canciones = JSON.parse(fs.readFileSync("repertorio.json")); // 3
+  const canciones = JSON.parse(fs.readFileSync("repertorio.json"));
   canciones.push(cancion);
   fs.writeFileSync("repertorio.json", JSON.stringify(canciones));
   res.send("cancion agregada con éxito!");
